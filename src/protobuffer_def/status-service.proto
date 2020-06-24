@@ -1,0 +1,62 @@
+syntax = "proto3";
+option go_package = ".;protobuffer_def";
+
+import "google/protobuf/any.proto";
+
+
+// protoc ./protobuffer_def/status-service.proto  --proto_path=./protobuffer_def/ --micro_out=./protobuffer_def/ --go_out=plugins=grpc:./protobuffer_def/
+service StatusServer {
+    rpc BaseInterface(BaseRequest) returns (BaseResponse) {}
+}
+
+enum CMD {
+    REGISTER_STATUS                                    = 0;       //注册状态
+    QUERY_STATUS                                       = 1;       //查询状态
+}
+
+ enum ReturnCode {
+    SUCCESS                                            = 0;       //成功
+    UNKOWN_CMD                                         = 1;       //未知的指令
+    BODY_IS_NULL                                       = 2;       //body为空
+    DESERIALIZATION_ERROR                              = 3;       //反序列化异常
+    SERIALIZATION_ERROR                                = 4;       //序列化异常
+    UNKOWN_ERROR                                       = 5;       //未知错误
+}
+
+message BaseRequest {
+    string                   requestId                 = 1;       //请求ID
+    CMD                      c                         = 2;       //请求指令
+    google.protobuf.Any      body                      = 3;       //参数
+}
+
+message BaseResponse {
+    string                    requestId                = 1;       //响应ID
+    ReturnCode                code                     = 2 ;      //状态码
+    string                    desc                     = 3;       //描述
+    CMD                       c                        = 4;       //指令
+    google.protobuf.Any       body                     = 5;       //响应结构体
+}
+
+//注册状态       请求
+message RegisterStatusRequest {
+    string                    identity                 = 1;       //帐号唯一标识
+    bytes                     device_type              = 2;       //设备类型   int8位
+    int32                     next_heartbeat_interval  = 3;       //下次心跳时间间隔，单位为秒
+    string                    register_info            = 4;       //注册信息
+}
+//注册状态        响应
+message RegisterStatusResponse {
+}
+
+//查询设备状态    请求
+message QueryStatusRequest {
+      string                  identity                  = 1;       //帐号唯一标识
+}
+//查询设备状态    响应
+message QueryStatusResponse {
+    message StatusInfo {
+      bytes                   device_type               = 1;       //设备类型   int8位
+      string                  register_info             = 2;       //注册信息
+    }
+    repeated StatusInfo       status                    = 1;       //状态信息
+}
