@@ -7,7 +7,6 @@ import (
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-micro/v2/service"
 	"github.com/micro/go-micro/v2/service/grpc"
-	"github.com/micro/go-plugins/registry/zookeeper/v2"
 	"status-server/protobuffer_def"
 	"time"
 )

@@ -29,12 +29,10 @@ replace go.etcd.io/bbolt v1.3.4 => github.com/coreos/bbolt v1.3.4
 
 replace github.com/coreos/go-systemd => github.com/coreos/go-systemd/v22 v22.0.0
 
-//go get -u -v github.com/golang/protobuf/protoc-gen-go@v1.2.0
 require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/fastly/go-utils v0.0.0-20180712184237-d95a45783239 // indirect
 	github.com/go-redis/redis v6.15.8+incompatible
-	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/golang/protobuf v1.4.2
 	github.com/google/btree v1.0.0 // indirect
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
@@ -42,18 +40,9 @@ require (
 	github.com/lestrrat-go/strftime v1.0.1 // indirect
 	github.com/micro/go-micro/v2 v2.9.0
 	github.com/micro/go-plugins/registry/zookeeper/v2 v2.8.0
-	github.com/miekg/dns v1.1.29 // indirect
-	github.com/nats-io/jwt v1.0.1 // indirect
-	github.com/nats-io/nats.go v1.10.0 // indirect
-	github.com/nats-io/nkeys v0.2.0 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/tebeka/strftime v0.1.4 // indirect
 	go.uber.org/zap v1.15.0
-	golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9 // indirect
-	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
-	golang.org/x/sys v0.0.0-20200620081246-981b61492c35 // indirect
-	golang.org/x/text v0.3.3 // indirect
-	golang.org/x/tools v0.0.0-20200619210111-0f592d2728bb // indirect
+	golang.org/x/net v0.0.0-20200520182314-0ba52f642ac2
 	google.golang.org/grpc v1.29.1
-	gopkg.in/yaml.v2 v2.3.0 // indirect
 )
